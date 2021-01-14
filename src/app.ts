@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import userRoutes from './components/User/routes';
+import postRoutes from './components/Post/routes';
 import { errorHandler } from './errors/errorHandler';
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 
 // Routes
 app.use('/accounts', userRoutes);
+app.use('/posts', postRoutes);
 
 // Error handler, must be last middleware
 app.use(errorHandler);

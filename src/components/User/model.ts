@@ -3,9 +3,11 @@ import {
     BeforeInsert,
     Column,
     Entity,
+    OneToMany,
     PrimaryGeneratedColumn,
 } from 'typeorm';
 import bcrypt from 'bcryptjs';
+import { Post } from '../Post/model';
 
 @Entity()
 export class User extends BaseEntity {
@@ -20,6 +22,9 @@ export class User extends BaseEntity {
 
     @Column('text', { nullable: true })
     bio: string;
+
+    @OneToMany(() => Post, (post) => post.user)
+    posts: Post[];
 
     @BeforeInsert()
     async hashPassword() {

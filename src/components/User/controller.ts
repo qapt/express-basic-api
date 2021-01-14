@@ -93,6 +93,7 @@ export const logout = async (req: Request, res: Response) => {
     return res.json({ success: true, message: 'Logged out' });
 };
 
+// testing purposes
 export const getAllUsers = async (req: Request, res: Response) => {
     const users = await UserService.getAllUsers();
     return res.json({ users });
